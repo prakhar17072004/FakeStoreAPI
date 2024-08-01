@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <div>
-        hello how are you
+        
         <Navbar path="/"/>
         <Routes>
             <Route path='/' element={<Shop/>}/>
