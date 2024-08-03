@@ -68,7 +68,7 @@ function Admin() {
   };
 
   return (
-    <div className="w-[1250px] mx-auto outline mt-[40px] mb-10 p-8">
+    <div className="w-[1250px] mx-auto outline mt-[40px] mb-10 p-8 rounded-md">
       <h1 className="text-center font-extrabold text-4xl underline p-8">Product Details</h1>
       <DataTable
       

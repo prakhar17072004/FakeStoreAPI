@@ -1,12 +1,15 @@
 import React,{useState,useEffect} from 'react'
 import Spinner from '../Components/Spinner';
 import Product from "../Components/Product";
+import Category from '../Components/Category';
 
 function Shop() {
 
   // State h fetch data ko store karne k liye
   const[loading,setLoading]= useState(false)
   const[product, setProduct] = useState([]);
+  const[filter,setFilter]= useState([]);
+  
 
 // Effect to fetch data when the component mounts
 useEffect(() => {
@@ -14,8 +17,8 @@ useEffect(() => {
 }, []); // Empty dependency array ensures the effect runs once on mount
 
 
-
-  //funtion to fetch the data 
+///////////////////////////////////////////////////////////////
+  //funtion to fetch the allproductdata //
 
   const fetchProducts = async()=>{
     setLoading(true);
@@ -33,6 +36,7 @@ useEffect(() => {
 
      // Update the state with the fetched data
      setProduct(result);
+     setFilter(result);
      
 
      }catch(err){
@@ -45,23 +49,46 @@ useEffect(() => {
   
 console.log(fetchProducts)
 
+const handlerFunction =(item)=>{
+  if(item ==="All Product"){
+    setFilter(product);
+  }else{
+    const filtered = product.filter(p => p.category === item);
+    setFilter(filtered);
+  }
+    
+}
+
+
+
   return (
-    <div>
+    <div className=''>
         {
                 loading? <Spinner/>:
-                product.length>1?
-                (<div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
+                product.length>0?
+                (<div className='flex   max-w-6xl  mx-auto space-y-10 space-x-5  min-h-[80vh] '>
+                  
+                  <div className='mt-[40px]  -ml-[140px] '>
+                    <h1 className='mx-auto font-extrabold p-4 text-2xl'>Categories</h1>
+                    <Category   handleFunction={handlerFunction}/>
+                    </div>
+                  <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
                    {
-                    product.map((post,index)=>(
+                    filter.map((post,index)=>(
                         <Product key={index} post={post}/>
                     ) )
                    
                    }
-                </div>):
-                <div className="flex justify-center items-center">
-                    <p>No Data found</p>
+                    
                 </div>
+                
+                </div>):
+                (<div className="flex justify-center items-center">
+                    <p>No Data found</p>
+                </div>)
             }
+
+            
 
   </div>
   )
