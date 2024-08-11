@@ -4,7 +4,7 @@ import Shop from './Pages/Shop.jsx'
 import Admin from './Pages/Admin.jsx'
 import Cart from './Pages/Cart.jsx'
 import Navbar from './Components/Navbar'
-
+import Form from './Components/Form.jsx'
 import './App.css'
 
 
@@ -17,8 +17,10 @@ function App() {
         
         <Navbar path="/"/>
         <Routes>
+            
             <Route path='/' element={<Shop/>}/>
             <Route path='/admin' element={<Admin/>}/>
+            <Route path='/form' element={<Form/>}/>
             <Route path='/cart' element={<Cart/>}/>
         </Routes>
       </div>

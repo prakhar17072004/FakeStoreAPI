@@ -75,7 +75,7 @@ const handlerFunction =(item)=>{
                   <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
                    {
                     filter.map((post,index)=>(
-                        <Product key={index} post={post}/>
+                        <Product key={index} post={post} product={product}/>
                     ) )
                    
                    }

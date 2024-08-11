@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
+import Form from "../Components/Form";
+import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa6";
+import { ToastContainer,toast } from "react-toastify";
+
 
 function Admin() {
+  
   const columns = [
     {
       name: "ID",
@@ -32,7 +38,7 @@ function Admin() {
     {
       name: "Delete",
       cell: row => (
-        <button onClick={() => handleDelete(row.id)}>Delete</button>
+        <button onClick={() => handleDelete(`toast("DELETE")`)}>Delete</button>
       ),
     },
   ];
@@ -69,6 +75,24 @@ function Admin() {
 
   return (
     <div className="w-[1250px] mx-auto outline mt-[40px] mb-10 p-8 rounded-md">
+     
+     <Link to="/form">
+            
+             <div className="flex text-center mx-auto   ">
+             <button className=" flex mx-auto text-center bg-pink-400 gap-4 p-4 rounded-lg">Add New Products 
+             <FaPlus  className="text-sm font-semibold outline mt-1"/>
+             </button>
+              
+             </div>
+              
+          </Link>
+         
+         
+
+         
+     
+
+
       <h1 className="text-center font-extrabold text-4xl underline p-8">Product Details</h1>
       <DataTable
       
@@ -77,6 +101,7 @@ function Admin() {
         progressPending={loading}
         
       />
+      <ToastContainer/>
     </div>
   );
 }
