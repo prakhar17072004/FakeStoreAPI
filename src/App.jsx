@@ -13,9 +13,9 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className=''>
         
-        <Navbar path="/"/>
+        <Navbar path="/" className=""/>
         <Routes>
             
             <Route path='/' element={<Shop/>}/>
