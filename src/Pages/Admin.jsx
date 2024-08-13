@@ -38,7 +38,7 @@ function Admin() {
     {
       name: "Delete",
       cell: row => (
-        <button onClick={() => handleDelete(`toast("DELETE")`)}>Delete</button>
+        <button onClick={() => handleDelete(`toast("DELETE")`)} className="bg-red-500 rounded-md p-4">Delete</button>
       ),
     },
   ];

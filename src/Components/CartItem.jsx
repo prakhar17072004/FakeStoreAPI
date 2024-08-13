@@ -10,6 +10,17 @@ function Cart() {
 
   console.log(cart);
 
+  const removeFromCart = (item) => {
+    // Remove item from cart array
+    const updatedCart = cart.filter((cartItem) => cartItem.id!== item.id);
+
+    // Update state
+    setCart(updatedCart);
+
+    // Update localStorage
+    localStorage.setItem('Product', JSON.stringify(updatedCart));
+  };
+
   return (
     <div className='w-[90%] self-start space-y-5 ml-5 '>
       {cart.length > 0 ? (
@@ -40,7 +51,7 @@ function Cart() {
                 </p>
                 <button
                 className="flex text-2xl text-red-900   bg-red-200 p-2 rounded-full"
-                  onClick={()=>removeFromCart()}
+                onClick={() => removeFromCart(item)}
                 >
                 <AiFillDelete />
                     
